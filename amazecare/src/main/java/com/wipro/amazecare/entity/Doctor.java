@@ -1,12 +1,12 @@
 package com.wipro.amazecare.entity;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,124 +17,74 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private String specialization;
-
-    @Column(nullable = false)
-    private int experience;
-
-    @Column(nullable = false)
     private String qualification;
-
-    @Column(nullable = false)
+    private Integer experience;
     private String designation;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "specialization_id")
+    private DoctorSpecialization specialization;
 
-    @Column(nullable = false, unique = true)
-    private String phone;
+    // mapped to User table
+    @Column(name = "user_id", nullable = false, unique = true)
+    private Long userId;
 
-    @Column(nullable = false)
-    private String status;  // Example: ACTIVE / INACTIVE
+	public Long getId() {
+		return id;
+	}
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    // Default Constructor
-    public Doctor() {
-    }
+	public String getName() {
+		return name;
+	}
 
-    // Getters and Setters
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getQualification() {
+		return qualification;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setQualification(String qualification) {
+		this.qualification = qualification;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Integer getExperience() {
+		return experience;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setExperience(Integer experience) {
+		this.experience = experience;
+	}
 
-    public String getSpecialization() {
-        return specialization;
-    }
+	public String getDesignation() {
+		return designation;
+	}
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
 
-    public int getExperience() {
-        return experience;
-    }
+	public DoctorSpecialization getSpecialization() {
+		return specialization;
+	}
 
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
+	public void setSpecialization(DoctorSpecialization specialization) {
+		this.specialization = specialization;
+	}
 
-    public String getQualification() {
-        return qualification;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+   
 }
