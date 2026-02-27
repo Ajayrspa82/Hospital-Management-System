@@ -34,5 +34,5 @@ public class DoctorSpecialization {
 		this.name = name;
 	}
 
-    // getters and setters
+  
 }

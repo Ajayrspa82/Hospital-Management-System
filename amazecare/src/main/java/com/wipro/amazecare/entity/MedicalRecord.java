@@ -48,5 +48,5 @@ public class MedicalRecord {
 		this.recordDetails = recordDetails;
 	}
 
-    // getters and setters
+ 
 }
